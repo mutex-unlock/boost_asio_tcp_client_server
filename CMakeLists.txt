@@ -8,20 +8,20 @@ project(boost_asio_tcp_client_server)
 set(CMAKE_CXX_STANDART 20)
 set(CMAKE_CXX_STANDART_REQUIRED ON)
 
-find_package(Boost 1.66 REQUIRED COMPONENTS system)
+find_package(Boost 1.91.0 REQUIRED COMPONENTS)
 
 
 add_executable(server
     server/TCPServer.cpp
     server/main.cpp
 )
-target_link_libraries(server PRIVATE Boost::system)
-target_include_directories(server PRIVATE include)
+
+target_include_directories(server PRIVATE ${Boost_INCLUDE_DIRS})
 
 
 add_executable(client
     client/TCPClient.cpp
     client/main.cpp
 )
-target_link_libraries(client PRIVATE Boost::system)
-target_include_directories(client PRIVATE include)
+
+target_include_directories(client PRIVATE ${Boost_INCLUDE_DIRS})

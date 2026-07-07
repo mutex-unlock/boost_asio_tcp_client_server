@@ -9,7 +9,7 @@ TTCPClient::TTCPClient(boost::asio::io_context& io_context,
     : socket_(io_context), resolver_(io_context)
 {
     boost::asio::ip::tcp::resolver::results_type endpoints =
-        resolver_resolve(host, std::to_string(port)
+        resolver_.resolve(host, std::to_string(port)
     );
 
     boost::asio::connect(socket_,
@@ -26,9 +26,9 @@ void TTCPClient::sendMessage(const std::string& message)
     boost::asio::streambuf buffer;
 
 
-    boost::asio::read_untill(socket_,
-                             buffer,
-                             '\n'
+    boost::asio::read_until(socket_,
+                            buffer,
+                            '\n'
     );
 
 

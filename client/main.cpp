@@ -24,7 +24,7 @@ int main()
         std::string message;
         std::getline(std::cin, message);
 
-        client.send_message(message);
+        client.sendMessage(message);
     }
 
     return 0;
